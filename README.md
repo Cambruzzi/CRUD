@@ -5,6 +5,11 @@ Um sistema completo de gerenciamento de produtos (CRUD) com autenticação, uplo
 ## 🎯 O Desafio
 Criar um CRUD de cadastro de produto, com autenticação e persistência no banco de dados, contendo os seguintes campos obrigatórios: `nome`, `código`, `valor`, `excluído`, `data de alteração` e `imagem`. O sistema deve expor endpoints REST e estar disponível online.
 
+## Site online
+```bash
+https://leocambruzzi.pythonanywhere.com/
+```
+
 ## ✨ Funcionalidades
 * **Autenticação:** Login e Registro com geração de Token de Acesso (Bearer Token).
 * **Gestão de Produtos:** Criação, Listagem, Edição e Deleção de itens.
