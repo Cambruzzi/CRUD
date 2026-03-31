@@ -1,0 +1,194 @@
+/* ==========================================================================
+   DESIGN SYSTEM BÁSICO (VARIÁVEIS)
+   Centraliza cores, espaçamentos e bordas. Facilita a manutenção e 
+   permite a criação futura de um "Dark Mode" de forma muito mais simples.
+   ========================================================================== */
+:root {
+    /* Cores da Marca e Estado */
+    --cor-fundo: #f4f6f9;
+    --cor-texto: #333333;
+    --cor-texto-secundario: #666666;
+    
+    --cor-primaria: #007bff;
+    --cor-primaria-hover: #0056b3;
+    
+    --cor-sucesso: #28a745;
+    --cor-sucesso-hover: #218838;
+    
+    --cor-alerta: #ffc107;
+    --cor-alerta-hover: #e0a800;
+    
+    --cor-perigo: #dc3545;
+    --cor-perigo-hover: #c82333;
+    
+    --cor-neutra: #6c757d;
+    --cor-neutra-hover: #5a6268;
+    
+    /* Bordas e Sombras */
+    --borda-suave: 1px solid #ced4da;
+    --raio-borda-card: 12px;
+    --raio-borda-botao: 6px;
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   1. RESET E CONFIGURAÇÕES GLOBAIS
+   Normaliza o comportamento dos navegadores e define a tipografia base.
+   ========================================================================== */
+* {
+    box-sizing: border-box; /* Impede que padding aumente o tamanho da div */
+    margin: 0;
+    padding: 0;
+}
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: var(--cor-fundo); 
+    color: var(--cor-texto);
+    padding: 40px 20px; 
+    max-width: 600px; 
+    margin: 0 auto; /* Centraliza a aplicação na tela */
+}
+
+/* ==========================================================================
+   2. COMPONENTES ESTRUTURAIS (LAYOUT)
+   ========================================================================== */
+.card { 
+    background-color: #ffffff;
+    border: none; 
+    padding: 30px; 
+    margin-bottom: 25px; 
+    border-radius: var(--raio-borda-card); 
+    box-shadow: var(--sombra-card);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+hr {
+    border: 0;
+    border-top: var(--borda-suave);
+    margin: 20px 0;
+}
+
+/* ==========================================================================
+   3. FORMULÁRIOS E INPUTS
+   Estilização limpa para garantir boa usabilidade e acessibilidade.
+   ========================================================================== */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+}
+
+input { 
+    display: block; 
+    width: 100%; 
+    margin-bottom: 15px; 
+    padding: 12px; 
+    border: var(--borda-suave);
+    border-radius: var(--raio-borda-botao);
+    font-size: 1rem;
+    transition: border-color 0.3s; /* Animação suave na transição de cor */
+}
+
+input:focus {
+    outline: none; /* Remove a borda preta padrão do navegador */
+    border-color: var(--cor-primaria); /* Destaque visual ao digitar */
+}
+
+/* Imagens dos Produtos */
+img {
+    max-width: 100px; 
+    display: block; 
+    margin-bottom: 10px;
+    border-radius: 4px; /* Pequeno toque de design: cantos levemente arredondados */
+}
+
+/* ==========================================================================
+   4. SISTEMA DE BOTÕES (UI KIT)
+   Componentes reutilizáveis baseados em intenção (Sucesso, Perigo, etc.)
+   ========================================================================== */
+.btn { 
+    padding: 12px; 
+    width: 100%; 
+    border: none; 
+    border-radius: var(--raio-borda-botao);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer; 
+    transition: background-color 0.2s, transform 0.1s;
+    margin-bottom: 10px;
+}
+
+/* Efeito de micro-interação: Feedback tátil virtual */
+.btn:active {
+    transform: scale(0.98); 
+}
+
+/* Variações de Cor dos Botões usando as Variáveis */
+.btn-primary { background-color: var(--cor-primaria); color: white; }
+.btn-primary:hover { background-color: var(--cor-primaria-hover); }
+
+.btn-success { background-color: var(--cor-sucesso); color: white; }
+.btn-success:hover { background-color: var(--cor-sucesso-hover); }
+
+.btn-secondary { background-color: var(--cor-neutra); color: white; }
+.btn-secondary:hover { background-color: var(--cor-neutra-hover); }
+
+.btn-danger { background-color: var(--cor-perigo); color: white; margin-bottom: 0; }
+.btn-danger:hover { background-color: var(--cor-perigo-hover); }
+
+.btn-warning { background-color: var(--cor-alerta); color: #212529; margin-bottom: 0; }
+.btn-warning:hover { background-color: var(--cor-alerta-hover); }
+
+/* ==========================================================================
+   5. COMPONENTES DE DOMÍNIO E UTILITÁRIOS
+   Classes específicas para o negócio (produtos) e manipuladores de estado.
+   ========================================================================== */
+
+/* Utility Class: Usada pelo JavaScript para trocar as telas (SPA) */
+.escondido { 
+    display: none !important; 
+}
+
+/* Mensagens de Feedback do Sistema */
+.texto-erro { color: var(--cor-perigo); font-size: 0.9rem; margin-bottom: 15px; font-weight: bold; }
+.texto-sucesso { color: var(--cor-sucesso); font-size: 0.9rem; margin-bottom: 15px; font-weight: bold; }
+
+/* Estrutura do Item da Lista de Produtos */
+.produto-item { 
+    border-bottom: var(--borda-suave); 
+    padding: 15px 0; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.produto-item-btn {
+    display: flex; 
+    gap: 10px; 
+    margin-top: 5px;
+}
+
+.produto-item-btn .btn {
+    width: auto;
+    padding: 8px 15px;
+}
+
+/* ==========================================================================
+   6. RODAPÉ
+   ========================================================================== */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+}
+
+footer a { color: var(--cor-primaria); text-decoration: none; }
+footer a:hover { text-decoration: underline; }

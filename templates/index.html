@@ -1,0 +1,99 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sistema de Gestão de Produtos</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <main>
+        
+        <section id="tela-login" class="card">
+            <h2>Fazer Login</h2>
+            
+            <input type="text" id="username" placeholder="Nome de usuário" aria-label="Nome de usuário">
+            <input type="password" id="password" placeholder="Senha" aria-label="Senha">
+            
+            <button class="btn btn-primary" onclick="fazerLogin()">Entrar na Conta</button>
+            <p id="msg-login" class="texto-erro"></p>
+            
+            <hr>
+            <p style="text-align: center; margin-bottom: 10px; color: #666;">Não tem uma conta?</p>
+            <button class="btn btn-secondary" onclick="mostrarCadastro()">Criar Nova Conta</button>
+        </section>
+
+        <section id="tela-cadastro" class="card escondido">
+            <h2>Criar Nova Conta</h2>
+            
+            <input type="text" id="novo-username" placeholder="Escolha um nome de usuário" aria-label="Escolha um nome de usuário">
+            <input type="password" id="novo-password" placeholder="Crie uma senha forte" aria-label="Crie uma senha forte">
+            
+            <button class="btn btn-success" onclick="registrarUsuario()">Cadastrar e Entrar</button>
+            <p id="msg-cadastro" class="texto-erro"></p>
+            
+            <hr>
+            <button class="btn btn-secondary" onclick="mostrarLogin()">Voltar para o Login</button>
+        </section>
+
+        <section id="tela-lista" class="card escondido">
+            <h2>Meus Produtos</h2>
+            <button class="btn btn-secondary" onclick="mostrarTelaProdutos()">+ Novo Produto</button>
+            <hr>
+            
+            <div id="conteiner-produtos"></div> 
+        </section>
+
+        <section id="tela-produto" class="card escondido">
+            <h2>Cadastrar Novo Produto</h2>
+            <button class="btn btn-primary" onclick="carregarListaProdutos()">Ver Meus Produtos</button>
+            <hr>
+            
+            <input type="text" id="nome-produto" placeholder="Nome do Produto" aria-label="Nome do Produto">
+            <input type="text" id="codigo-produto" placeholder="Código" aria-label="Código do Produto">
+            <input type="number" id="valor-produto" placeholder="Valor (ex: 150.50)" aria-label="Valor do Produto">
+            
+            <label for="imagem-produto">Imagem do Produto:</label>
+            <input type="file" id="imagem-produto" accept="image/*">
+            
+            <button class="btn btn-success" onclick="cadastrarProduto()">Salvar Produto</button>
+            
+            <p id="msg-produto"></p>
+            
+            <hr>
+            <button class="btn btn-danger" onclick="sair()">Sair (Logout)</button>
+        </section>
+
+        <section id="tela-editar" class="card escondido">
+            <h2>Editar Produto</h2>
+            
+            <input type="hidden" id="edit-id"> 
+            
+            <input type="text" id="edit-nome" placeholder="Nome do Produto" aria-label="Editar Nome do Produto">
+            <input type="text" id="edit-codigo" placeholder="Código" aria-label="Editar Código do Produto">
+            <input type="number" id="edit-valor" placeholder="Valor (ex: 150.50)" aria-label="Editar Valor do Produto">
+            
+            <label for="edit-imagem">Atualizar Imagem (deixe em branco para manter a atual):</label>
+            <input type="file" id="edit-imagem" accept="image/*">
+            
+            <button class="btn btn-warning" onclick="salvarAlteracao()">Salvar Alteração</button>
+            <button class="btn btn-secondary" onclick="mostrarTelaLista()">Cancelar</button>
+            <p id="msg-editar" class="texto-erro"></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Para usar a API consulte <a href="/api/docs/" target="_blank">Documentação</a></p>
+    </footer>
+
+    <script src="{% static 'js/ui.js' %}"></script>
+    <script src="{% static 'js/auth.js' %}"></script>
+    <script src="{% static 'js/produtos.js' %}"></script>
+
+</body>
+</html>
