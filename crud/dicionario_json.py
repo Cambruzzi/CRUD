@@ -15,7 +15,7 @@ class ProdutosDicionario(serializers.ModelSerializer):
     garantindo que as regras (como max_length ou blank=True) definidas no Model sejam 
     aplicadas automaticamente na validação da API.
     """
-
+    imagem = serializers.ImageField(required=False, allow_null=True)
     class Meta:
         model = Produto
         fields = [

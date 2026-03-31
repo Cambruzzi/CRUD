@@ -28,9 +28,21 @@ from . import services
 @extend_schema(
     methods=['POST'],
     summary="Cadastrar um novo produto",
-    description="Cria um produto. ⚠️ **Requer Token Bearer**.",
-    request=ProdutosDicionario,
-    responses={201: ProdutosDicionario, 400: None},
+    request={
+        'multipart/form-data': {
+            'type': 'object',
+            'properties': {
+                'nome': {'type': 'string'},
+                'codigo': {'type': 'string'},
+                'valor': {'type': 'number', 'format': 'decimal'},
+                'excluido': {'type': 'boolean', 'default': False},
+                # Aqui está o segredo: definimos como string + formato binário
+                'imagem': {'type': 'string', 'format': 'binary'} 
+            },
+            'required': ['nome', 'codigo', 'valor']
+        }
+    },
+    responses={201: ProdutosDicionario},
     tags=["Produtos"]
 )
 # Documentação específica para o método GET
