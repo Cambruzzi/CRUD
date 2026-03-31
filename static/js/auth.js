@@ -37,7 +37,7 @@ async function fazerLogin() {
 async function registrarUsuario() {
     const user = document.getElementById('novo-username').value;
     const pass = document.getElementById('novo-password').value;
-    const resposta = await fetch('/api/registrar/', {
+    const resposta = await fetch('/api/v1/registrar/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: user, password: pass })
