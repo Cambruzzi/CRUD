@@ -118,7 +118,15 @@ REST_FRAMEWORK = {
     # Define quem pode acessar a API
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle', 
+        'rest_framework.throttling.UserRateThrottle', 
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '6/second',  # Usuários anônimos: máx 10 requisições por minuto
+        'user': '6/second'    # Usuários logados: máx 1000 requisições por dia
+    }
 }
 
 SPECTACULAR_SETTINGS = {
